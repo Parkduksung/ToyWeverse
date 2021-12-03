@@ -19,3 +19,9 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    compileSdkVersion = 31
+    minSdkVersion = 21
+    targetSdkVersion = 31
+}
