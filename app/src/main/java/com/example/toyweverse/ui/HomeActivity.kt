@@ -1,22 +1,22 @@
-package com.example.toyweverse
+package com.example.toyweverse.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
+import com.example.toyweverse.R
+import com.example.toyweverse.base.BaseActivity
 import com.example.toyweverse.base.ViewState
+import com.example.toyweverse.databinding.ActivityMainBinding
 import com.example.toyweverse.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val homeViewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         initViewModel()
     }
 
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             is HomeViewModel.HomeViewState.Error -> {
-
+                Log.d("결과", viewState.message)
             }
         }
     }
