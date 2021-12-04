@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -75,4 +76,26 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     implementation "com.google.code.gson:gson:$gson_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version"
+}
+
+// JetPack 관련
+dependencies {
+
+    ext {
+        liveData_version = '2.3.0'
+        viewModel_version = '2.3.0'
+        lifeCycle_version = '2.3.0'
+    }
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModel_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveData_version"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycle_version"
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
 }
