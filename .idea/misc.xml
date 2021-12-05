@@ -4,10 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProjects/ToyWeverse/app/src/main/res/layout/activity_main.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/duksu/AndroidStudioProjects/ToyWeverse/app/src/main/res/layout/activity_main.xml" value="0.13360507246376813" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

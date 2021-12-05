@@ -1,6 +1,9 @@
 package com.example.toyweverse.viewmodel
 
 import android.app.Application
+import android.util.Log
+import com.example.toyweverse.api.response.Sale
+import com.example.toyweverse.api.response.SaleCategory
 import com.example.toyweverse.api.response.ShopInfo
 import com.example.toyweverse.base.BaseViewModel
 import com.example.toyweverse.base.ViewState
@@ -30,8 +33,23 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun getSaleCategory(id : Int) {
+        ioScope.launch {
+            when(val result =weverseRepository.getSaleCategories(id) ) {
+                is Result.Success -> {
+                    viewStateChanged(HomeViewState.GetSaleCategory(result.data.saleCategories))
+                }
+
+                is Result.Error -> {
+                    viewStateChanged(HomeViewState.Error(result.exception.message ?: "GetShopInfoError"))
+                }
+            }
+        }
+    }
+
     sealed class HomeViewState : ViewState {
         data class GetShopInfo(val infoList : List<ShopInfo>) : HomeViewState()
+        data class GetSaleCategory(val saleList : List<SaleCategory>) : HomeViewState()
         data class Error(val message : String) : HomeViewState()
     }
 }

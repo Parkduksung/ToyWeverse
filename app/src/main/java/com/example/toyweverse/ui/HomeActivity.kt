@@ -2,6 +2,7 @@ package com.example.toyweverse.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.toyweverse.R
 import com.example.toyweverse.base.BaseActivity
@@ -18,6 +19,8 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewModel()
+        homeViewModel.getShopInfo()
+        homeViewModel.getSaleCategory(1)
     }
 
 
@@ -34,11 +37,15 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun onChangedHomeViewState(viewState: HomeViewModel.HomeViewState) {
         when (viewState) {
             is HomeViewModel.HomeViewState.GetShopInfo -> {
-                Log.d("결과", viewState.infoList.size.toString())
+
+            }
+
+            is HomeViewModel.HomeViewState.GetSaleCategory -> {
+
             }
 
             is HomeViewModel.HomeViewState.Error -> {
-                Log.d("결과", viewState.message)
+
             }
         }
     }
