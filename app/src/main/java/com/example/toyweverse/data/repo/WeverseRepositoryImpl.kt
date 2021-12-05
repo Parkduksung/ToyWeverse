@@ -1,6 +1,7 @@
 package com.example.toyweverse.data.repo
 
 
+import com.example.toyweverse.api.response.SaleCategoryResponse
 import com.example.toyweverse.api.response.ShopInfoResponse
 import com.example.toyweverse.data.source.WeverseRemoteDataSource
 import kotlinx.coroutines.Dispatchers
@@ -15,4 +16,8 @@ class WeverseRepositoryImpl @Inject constructor(private val weverseRemoteDataSou
         return@withContext weverseRemoteDataSource.getShopInfo()
     }
 
+    override suspend fun getSaleCategories(id: Int): Result<SaleCategoryResponse> =
+        withContext(Dispatchers.IO) {
+            return@withContext weverseRemoteDataSource.getSaleCategories(id = id)
+        }
 }
